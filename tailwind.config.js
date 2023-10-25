@@ -6,7 +6,11 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'lobster' :['Lobster', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }

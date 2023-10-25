@@ -1,8 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 *::selection{
-    color:aliceblue;
+    color:white;
     background-color: black;
+}
+
+/* creating the hover effect on landing page */
+.stroke{
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 1px;
+    color: #fff;
+    font-weight: 900;
+    cursor: crosshair;
+}
+
+.overlayGif{
+    z-index: -1;
+    top: 0;
+    left: 5vw;
+    scale: 0.75;
+    transition: all linear 0.3s ;
+}
+
+.overlayGif img{
+    height: 60vh;
+    width: 30vw;
+    border-radius: 50%;
 }

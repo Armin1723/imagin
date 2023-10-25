@@ -2,7 +2,7 @@ import React from 'react'
 
 const Community = () => {
   return (
-    <div>
+    <div className='pt-[8vh]'>
       Community
     </div>
   )

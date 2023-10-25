@@ -2,7 +2,7 @@ import React from 'react'
 
 const CreatePost = () => {
   return (
-    <div>
+    <div className='pt-[8vh]'>
       Create any Post
     </div>
   )

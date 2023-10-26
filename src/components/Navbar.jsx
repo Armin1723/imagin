@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   return (
-    <div className='w-full bg-white flex items-center justify-center md:justify-between px-4 md:px-8 fixed bg-gradient-to-b from-blue-400/60 to-transparent' style={{WebkitTapHighlightColor: 'transparent'}}>
+    <div className='w-full flex items-center justify-center md:justify-between px-4 md:px-8 fixed bg-gradient-to-b from-blue-400/60 to-transparent' style={{WebkitTapHighlightColor: 'transparent'}}>
         <Link to='/'>
             <img src={logo} alt="logo" draggable="false" className='h-[8vh] mix-blend-multiply select-none cursor-pointer'/>
         </Link>

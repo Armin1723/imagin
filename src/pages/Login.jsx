@@ -23,7 +23,7 @@ const Login = ({setIsLoggedIn}) => {
 
   const handleLogin = async (e)=>{
     e.preventDefault()
-      const response = await fetch('http://localhost:8000/api/user/login',{headers : {
+      const response = await fetch('https://imagin-backend.onrender.com/api/user/login',{headers : {
         'Content-Type' : 'application/json',
         },method : 'post' ,
         body : JSON.stringify({

@@ -3,10 +3,8 @@ const setActive = (e) =>{
     e.preventDefault(); 
     let icons = document.querySelectorAll('.icon')
     Object.values(icons).map((icon) =>{
-        if(icon.classList.contains('active')){
-            icon.classList.remove('active');
-        }
+        icon.style.color = 'black'
     })
-    e.target.classList.add('active'); 
+    e.target.style.color = 'purple'
 }
 export default setActive;

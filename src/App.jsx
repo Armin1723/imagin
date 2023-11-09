@@ -7,15 +7,15 @@ const App = () => {
   const [ isLoggedIn, setILoggedIn ] = useState(false)
   return (
     <BrowserRouter>
-      <div className="flex flex-col justify-between h-[100dvh]">
-        { isLoggedIn && <Navbar/>}
+      <div className="flex flex-col justify-between min-h-[100vh]">
+        { isLoggedIn && <Navbar setIsLoggedIn={setILoggedIn}/>}
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<Login setIsLoggedIn={setILoggedIn}/>} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/Community' element={<Community />} />
-          <Route path='/Create' element={<CreatePost />} />
+          <Route path='/Community' element={<Community setIsLoggedIn={setILoggedIn}/>} />
+          <Route path='/Create' element={<CreatePost setIsLoggedIn={setILoggedIn}/>} />
         </Routes>
-        { isLoggedIn && <NavbarBottom />}
+        { isLoggedIn && <NavbarBottom setIsLoggedIn={setILoggedIn}/>}
       </div>
     </BrowserRouter>
 

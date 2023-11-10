@@ -1,3 +1,3 @@
-const baseUrl = 'https://imagin-backend.onrender.com/'
+const baseUrl = 'http://imagin-backen.onrender.com'
 
 export default baseUrl

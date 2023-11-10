@@ -11,10 +11,13 @@ const hashToImage = async(hash)=>{
     try {
         const response = await fetch(url, options);
         const result = await response.blob()
+        if(result.type === 'application/json'){
+            const image = {error : true, message : 'Image not found/ Kindly retry.'}
+            return image
+        }
         const imageUrl = URL.createObjectURL(result);
-        const image = { error : false , url : imageUrl}
-        console.log(image)
-        return image
+        const image = { error : false , url : imageUrl, blob : result}
+        return image 
     } catch (error) {
         console.error(error);
     }
@@ -45,10 +48,9 @@ const fetchActualImage = async(userPrompt)=>{
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
-        if(result.hash){
+        if(result.hash){    
             const image = await hashToImage(result.hash);
-            return image
+            return image   
         }
         else{
             const image = {error : true, message : result.message}

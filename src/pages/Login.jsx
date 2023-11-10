@@ -5,7 +5,7 @@ import hoverGif from '../assets/hoverGif.gif'
 import { Link, useNavigate } from 'react-router-dom'
 import {animateHover, removeHover} from '../services'
 import { ToastContainer, toast } from 'react-toastify'
-// import jwt from 'jsonwebtoken'
+import baseUrl from '../assets/constants/baseUrl.js'
 
 const Login = ({setIsLoggedIn}) => {
   const [email, setEmail] = useState('')
@@ -23,7 +23,7 @@ const Login = ({setIsLoggedIn}) => {
 
   const handleLogin = async (e)=>{
     e.preventDefault()
-      const response = await fetch('https://imagin-backend.onrender.com/api/user/login',{headers : {
+      const response = await fetch(baseUrl + '/api/user/login',{headers : {
         'Content-Type' : 'application/json',
         },method : 'post' ,
         body : JSON.stringify({

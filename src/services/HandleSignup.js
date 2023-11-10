@@ -1,5 +1,8 @@
+import baseUrl from "../assets/constants/baseUrl";
+
 const handleSignup = async(credentials)=>{
-    const response = await fetch('http://localhost:8000/api/user/signup', {headers:{
+    const response = await fetch(baseUrl + '/api/user/signup', {
+    headers:{
         'Content-Type' : 'application/json'
     },
     method : 'post',

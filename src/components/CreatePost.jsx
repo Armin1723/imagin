@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { jwtDecode } from "jwt-decode"
 import defaultImg from '../assets/initialImg.gif'
 import PacmanLoader from 'react-spinners/PacmanLoader'
 import fetchActualImage from '../services/FetchActualImage.js'
 import getRandomPrompt from '../services/GetRandomPrompt.js'
 import { UilShare } from '@iconscout/react-unicons'
+import savePost from '../services/SavePost.js'
+import sharePostToCommunity from '../services/SharePost.js'
 
 
 const CreatePost = ({setIsLoggedIn}) => {
@@ -24,13 +26,41 @@ const CreatePost = ({setIsLoggedIn}) => {
     if(image && image.error){
       setImg(defaultImg)
       alert(image.message)
-    }else setImg(image.url)
+    }else {
+      setImg(image.url)
+      //For storing the post in Database.
+      storePost(image)
+    }
     setIsLoading(false)
   }
 
-  //To share a post with community.
-  const handleSubmit = (e) =>{
-    e.preventDefault();
+  //To store the post.
+  const storePost =async (image) =>{
+    var reader = new FileReader();
+    reader.readAsDataURL(image.blob); 
+    reader.onloadend = async function() {
+      var base64data = reader.result;   
+      const response = await savePost(base64data, prompt, user.name, user.id)
+      if(response && response.success === false){
+        toast.error(response.message)
+      }else {
+        const postID = response.postID
+        localStorage.removeItem('postID')
+        localStorage.setItem('postID', postID)
+        toast.success(response.message)
+      }
+    }
+  }
+
+  //To share the post.]
+  const sharePost = async(e)=>{ 
+    e.preventDefault()
+    const response = await sharePostToCommunity()
+    if(response && response.error){
+      toast.error(response.message)
+    }else {
+      toast.success(response.message)
+    }
   }
 
   //To fetch random prompt.
@@ -54,6 +84,8 @@ const CreatePost = ({setIsLoggedIn}) => {
   return (
     <div className='pt-[10vh] mb-[6vh] md:mb-0 mx-4 md:mx-20 min-h-[100vh] flex flex-col gap-4 md:flex-row justify-center items-center '>
 
+      <ToastContainer/>
+
       <div className="left w-full md:w-1/3 place-items-center h-[40%]">
         <div className="heading font-bold text-3xl mb-2 tracking-tight ">CREATE POST</div>
         <div className="description">Welcome {user.name}. Re-<span className='font-lobster '>iMAGIN</span> your thoughts.</div>
@@ -74,7 +106,7 @@ const CreatePost = ({setIsLoggedIn}) => {
       </div>
 
       <div className="right w-full flex flex-col md:w-2/5 items-center">
-        <div className="mainImgContainer rounded-md grid place-items-center w-full md:h-[70vh] h-[40vh]">
+        <div className="mainImgContainer rounded-md grid place-items-center w-full md:h-[70vh] h-[40vh] aspect-auto overflow-hidden">
           {isLoading ? 
                       <PacmanLoader
                       color={"#93c5fd"}
@@ -84,9 +116,9 @@ const CreatePost = ({setIsLoggedIn}) => {
                       aria-label="Loading Spinner"
                       data-testid="loader"
                     /> : 
-                      <img src={img} className='h-[40vh] md:h-[70vh] md:w-[60vw] w-[95%] rounded-md md:rounded-xl border-2 border-blue-300'/>}
+                      <img src={img} className='h-[40vh] md:h-[70vh] md:w-inherit w-full rounded-md md:rounded-xl border-2 border-blue-300'/>}
         </div>
-        {img !== defaultImg && <button className="shareButton my-4 p-2 rounded-md bg-gradient-to-br from-green-700/90 to-green-500/50 hover:bg-gradient-to-r w-full flex justify-center gap-2 font-bold">Share <span><UilShare/></span></button>}
+        {img !== defaultImg && <button className="shareButton my-4 p-2 rounded-md bg-gradient-to-br from-green-700/90 to-green-500/50 hover:bg-gradient-to-r w-full flex justify-center gap-2 font-bold" onClick={sharePost}>Share <span><UilShare/></span></button>}
       </div>
 
     </div>

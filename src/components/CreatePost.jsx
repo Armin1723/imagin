@@ -39,7 +39,8 @@ const CreatePost = ({setIsLoggedIn}) => {
     var reader = new FileReader();
     reader.readAsDataURL(image.blob); 
     reader.onloadend = async function() {
-      var base64data = reader.result;   
+      var base64data = reader.result;
+      console.log(base64data)   
       const response = await savePost(base64data, prompt, user.name, user.id)
       if(response && response.success === false){
         toast.error(response.message)

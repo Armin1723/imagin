@@ -3,14 +3,20 @@ import { Link , useNavigate} from 'react-router-dom'
 import { UilImagePlus, UilUser, UilSignOutAlt, UilApps } from '@iconscout/react-unicons'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { jwtDecode } from "jwt-decode"
 import { handleLogout } from '../services'
 
 const NavbarBottom = ({setIsLoggedIn}) => {
     const [active, setActive] = useState('create')
+    const [ userId , setUserId ] = useState('')
     const navigateTo = useNavigate()
 
     //Handle Navigation
     useEffect(()=>{
+        //Get Id of user
+        const user = jwtDecode(localStorage.getItem('userAuth'))
+        setUserId(user.id)
+
         let icons = document.querySelectorAll('.icon')
         Object.values(icons).map((icon) =>{
             icon.style.color = 'black'
@@ -23,7 +29,11 @@ const NavbarBottom = ({setIsLoggedIn}) => {
                 icon.style.borderBottom = '2px solid rgb(33, 37, 75)'
             }        
         })
-    },[active]) 
+    },[active])
+    
+    
+    
+
 
     //Logout function
     const logout =()=>{
@@ -44,8 +54,8 @@ const NavbarBottom = ({setIsLoggedIn}) => {
                 <UilApps className='icon pb-1 transition-all duration-300' size={30} />
             </Link>
         </div>
-        <div onClick={e =>setActive(e.currentTarget.id)} id='/'>
-            <Link to='/' >
+        <div onClick={e =>setActive(e.currentTarget.id)} id='profile'>
+            <Link to={`user/${userId}`} >
                 <UilUser className='icon pb-1 transition-all duration-300' size={30} />
             </Link>
         </div>
@@ -57,5 +67,4 @@ const NavbarBottom = ({setIsLoggedIn}) => {
     </div>
   )
 }
-
 export default NavbarBottom

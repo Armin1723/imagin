@@ -36,8 +36,6 @@ const fetchActualImage = async(userPrompt)=>{
         body: new URLSearchParams({
             prompt: userPrompt,
             id: '12345',
-            width: '768',
-            height: '768',
             inferenceSteps: '50',
             guidanceScale: '7.5',
             img2img_strength: '0.8'
@@ -60,5 +58,4 @@ const fetchActualImage = async(userPrompt)=>{
         console.error(error);
     }
 }
-
 export default fetchActualImage

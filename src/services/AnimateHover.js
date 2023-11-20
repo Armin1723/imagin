@@ -6,6 +6,4 @@ const animateHover = (dets) =>{
     gif.style.top = (dets.clientY - 200 ) + 'px'
     gif.style.left = (dets.clientX - 300) + 'px'
 }
-
-
 export default animateHover

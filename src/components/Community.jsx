@@ -25,17 +25,19 @@ const Community = ({setIsLoggedIn}) => {
     }
   },[])
   return (
-    <div className='pt-[8vh] py-4'>
-      <div className="grid md:grid-cols-3 grid-cols-1 px-6 gap-5">
-      {posts.map((post, index)=>{
+    <div className='py-[8vh] '>
+      <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3 mx-4 md:mx-12">
+        {posts.map((post, index)=>{
         return(
-          <div key={index} className='border-2 border-black rounded-md shadow-lg shadow-gray-500'>
-            <img src={post.image} alt={post.prompt} className='rounded-md' />
-            <p className='font-bold pl-4 '>{post.username}</p>
-            <p>{post.prompt}</p>
+          <div key={index} className={`group relative shadow-card hover:shadow-cardhover card rounded-xl`}>
+            <img src={post.image} alt={post.prompt} className='w-full h-auto object-cover rounded-xl' />
+            <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-300/10">
+              <p className='font-bold text-xl capitalize md:text-gray-200/70 '>{post.username}</p>
+              <p className='text-sm overflow-y-auto'>{post.prompt}</p>
+            </div>
           </div>
+          )}
         )}
-      )}
       </div>
     </div>
   )

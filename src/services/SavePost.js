@@ -3,7 +3,7 @@ import baseUrl from "../assets/constants/baseUrl";
 const savePost = async (image, prompt, username, userID) => {
     try {
         const response = await fetch(baseUrl + '/api/post/save', {
-            method: "POST",
+            method: "post",
             headers: {
                 "Content-Type": "application/json",
             },

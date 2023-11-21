@@ -47,8 +47,8 @@ const Profile = ({ isLoggedIn , setIsLoggedIn }) => {
             return(
                 <div key={index} className={`group relative shadow-card hover:shadow-cardhover card rounded-xl border-2 border-teal-500`}>
                 <img src={post.image} alt={post.prompt} className='w-full h-auto object-cover rounded-xl' />
-                <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-300/10">
-                <p className='text-sm overflow-y-auto'>{post.prompt}</p>
+                <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-700/40 backdrop-blur-md">
+                <p className='text-sm overflow-y-auto md:text-gray-300'>{post.prompt}</p>
                 </div>
                 </div>
             )}

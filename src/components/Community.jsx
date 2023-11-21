@@ -31,9 +31,9 @@ const Community = ({setIsLoggedIn}) => {
         return(
           <div key={index} className={`group relative shadow-card hover:shadow-cardhover card rounded-xl`}>
             <img src={post.image} alt={post.prompt} className='w-full h-auto object-cover rounded-xl' />
-            <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-300/10">
-              <p className='font-bold text-xl capitalize md:text-gray-200/70 '>{post.username}</p>
-              <p className='text-sm overflow-y-auto'>{post.prompt}</p>
+            <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-700/40 backdrop-blur-md">
+              <p className='font-bold text-xl capitalize md:text-gray-200 '>{post.username}</p>
+              <p className='text-sm overflow-y-auto md:text-gray-300'>{post.prompt}</p>
             </div>
           </div>
           )}

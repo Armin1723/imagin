@@ -39,7 +39,7 @@ const Profile = ({ isLoggedIn , setIsLoggedIn }) => {
 
   return (
     <div className='my-[8vh] flex flex-col'>
-        <div className="topCard mx-12 flex flex-col py-4 ">
+        <div className="topCard px-12 flex flex-col py-2 sticky top-[8dvh] z-10 bg-white oveflow-hidden w-full">
             <p className='text-3xl font-extrabold capitalize'>{ user && user.firstName }</p>
             <p className='font-bold'>Posts: {posts && posts.length}</p>
             <p className='font-bold'>User ID : <span className='font-light text-sm'>{user && user.id}</span></p>

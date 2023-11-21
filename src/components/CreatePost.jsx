@@ -89,7 +89,7 @@ const CreatePost = ({setIsLoggedIn}) => {
 
       <div className="left w-full md:w-1/3 place-items-center h-[40%]">
         <div className="heading font-bold text-3xl mb-2 tracking-tight ">CREATE POST</div>
-        <div className="description">Welcome {user.name}. Re-<span className='font-lobster '>iMAGIN</span> your thoughts.</div>
+        <div className="description">Welcome <span className='capitalize tracking-wider font-lobster text-xl'>{user.name}</span>. Re-<span className='font-lobster '>iMAGIN</span> your thoughts.</div>
         <div className="desc-2 text-sm">Create stunning visual images through AI only using textual prompts.</div>
         <form method='post' className='flex flex-col'>
           <div className='flex flex-row pt-6'>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import fetchTempUser from '../services/FetchTempUser.js'
 import fetchUserPosts from '../services/FetchUserPosts.js'
+import { UilImageDownload } from '@iconscout/react-unicons'
 
 const Profile = ({ isLoggedIn , setIsLoggedIn }) => {
     const [ user, setUser ] = useState(null)
@@ -45,10 +46,11 @@ const Profile = ({ isLoggedIn , setIsLoggedIn }) => {
         <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3 mx-4 md:mx-12">
             {posts && posts.map((post, index)=>{
             return(
-                <div key={index} className={`group relative shadow-card hover:shadow-cardhover card rounded-xl border-2 border-teal-500`}>
+                <div key={index} className={`group relative shadow-card hover:shadow-cardhover card rounded-xl border-2 border-teal-500 md:overflow-hidden`}>
                 <img src={post.image} alt={post.prompt} className='w-full h-auto object-cover rounded-xl' />
-                <div className="w-full group-hover:flex flex-col max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 hover:bg-gray-700/40 backdrop-blur-md">
-                <p className='text-sm overflow-y-auto md:text-gray-300'>{post.prompt}</p>
+                <div className="w-full group-hover:flex justify-between items-center max-h-[94.5%] hidden relative md:absolute md:bottom-0 md:text-gray-300/70 p-4 md:hover:bg-gray-700/40 backdrop-blur-md">
+                <p className='w-4/5 text-sm overflow-y-auto md:text-gray-300'>{post.prompt}</p>
+                <UilImageDownload className='w-1/5 md:text-gray-300 md:hover:text-gray-100 cursor-pointer text-right' onClick={()=> downloadImage(post._id, post.image)} style={{WebkitTapHighlightColor: 'transparent'}}/>
                 </div>
                 </div>
             )}

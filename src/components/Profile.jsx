@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import fetchTempUser from '../services/FetchTempUser.js'
 import fetchUserPosts from '../services/FetchUserPosts.js'
 import { UilImageDownload } from '@iconscout/react-unicons'
+import downloadImage from '../services/DownloadImage.js'
 
 const Profile = ({ isLoggedIn , setIsLoggedIn }) => {
     const [ user, setUser ] = useState(null)

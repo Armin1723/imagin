@@ -70,7 +70,7 @@ const Signup = () => {
                  placeholder='Enter your Last name' 
                  required/>
         </div>
-        <div className="email flex md:justify-start w-[110%] md:w-4/5 gap-4">
+        <div className="email flex w-[110%] md:w-[120%] gap-4 justify-center">
           <input type="email" 
                  name="email"
                  onChange={(e)=>setEmail(e.currentTarget.value)} 

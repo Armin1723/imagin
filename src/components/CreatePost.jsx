@@ -25,7 +25,7 @@ const CreatePost = ({setIsLoggedIn}) => {
     const image = await fetchActualImage(prompt)
     if(image && image.error){
       setImg(defaultImg)
-      alert(image.message)
+      toast.error("image in queue, retry...")
     }else {
       setImg(image.url)
       //For storing the post in Database.
@@ -119,7 +119,7 @@ const CreatePost = ({setIsLoggedIn}) => {
                     /> : 
                       <img src={img} className='h-[40vh] md:h-[70vh] md:w-inherit w-full rounded-md md:rounded-xl border-2 border-blue-300'/>}
         </div>
-        {img !== defaultImg && <button className="shareButton my-4 p-2 rounded-md bg-gradient-to-br from-green-700/90 to-green-500/50 hover:bg-gradient-to-r w-full flex justify-center gap-2 font-bold" onClick={sharePost}>Share <span><UilShare/></span></button>}
+        {(img !== defaultImg && !isLoading) && <button className="shareButton my-4 p-2 rounded-md bg-gradient-to-br from-green-700/90 to-green-500/50 hover:bg-gradient-to-r w-full flex justify-center gap-2 font-bold" onClick={sharePost}>Share <span><UilShare/></span></button>}
       </div>
 
     </div>

@@ -46,7 +46,7 @@ const fetchActualImage = async(userPrompt)=>{
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        if(result.hash){    
+        if(result.hash){  
             const image = await hashToImage(result.hash);
             return image   
         }

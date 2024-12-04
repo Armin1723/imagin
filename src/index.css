@@ -13,7 +13,7 @@
 .stroke{
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: 1px;
-    color: #fff;
+    color: transparent;
     font-weight: 900;
     cursor: crosshair;
 }

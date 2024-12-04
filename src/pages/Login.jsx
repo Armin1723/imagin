@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { UilGoogle } from '@iconscout/react-unicons'
 import logo from '../assets/logo.png'
 import hoverGif from '../assets/hoverGif.gif'
 import { Link, useNavigate } from 'react-router-dom'
 import {animateHover, removeHover} from '../services'
-import { useGoogleLogin } from '@react-oauth/google';
 import { ToastContainer, toast } from 'react-toastify'
 import baseUrl from '../assets/constants/baseUrl.js'
-import { jwtDecode } from 'jwt-decode'
 
 const Login = ({setIsLoggedIn}) => {
   const [email, setEmail] = useState('')
